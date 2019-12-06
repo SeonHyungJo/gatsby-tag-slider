@@ -15,7 +15,8 @@ before_script :
 
 script:
   - yarn build
-  - cd example && yarn install && yarn run build
+  - yarn predeploy
+  - yarn deploy
 
 deploy:
   provider: npm
@@ -24,11 +25,3 @@ deploy:
   edge: true # opt in to dpl v2
   on:
     tags: true
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  keep_history: true
-  local_dir: example/build
-  on:
-    branch: master
