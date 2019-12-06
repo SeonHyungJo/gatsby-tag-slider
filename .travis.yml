@@ -2,3 +2,19 @@ language: node_js
 node_js:
   - 9
   - 8
+
+deploy:
+  provider: npm
+  email: "seonhyung.jo@gmail.com"
+  api_key: "83bce1fe-eaae-406a-886b-e5df3c279850"
+  edge: true # opt in to dpl v2
+  on:
+    tags: true
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  local_dir: example/build
+  on:
+    branch: master

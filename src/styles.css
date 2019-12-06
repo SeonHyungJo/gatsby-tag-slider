@@ -1,9 +1,11 @@
 .tagContainer{
   display: inline-block;
-  width: 250px;
+  max-width: 250px;
   margin: 1em;
 
-  border: 1px solid #000;
+  background-color: #F6F6F6;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 25px;
 
   font-size: 1em;
   overflow-x: hidden;
@@ -13,8 +15,6 @@
   display: inline-block;
   padding: 0.5em;
 
-  border: 1px solid #000;
-
   font-size: 1em;
   white-space: nowrap;
 }
@@ -22,22 +22,33 @@
 .tagItem {
   display: inline-block;
   padding: 0.2em;
-}
+  margin: 0 0.1em;
+  min-width: 50px;
 
-.tagItem:last-child {
+  background-color: #77af9c;
+
+  /* border: 1px solid #000; */
+  border-radius: 25px;
+  box-shadow: 0rem 0.1rem 0.01rem rgba(0, 0, 0, 0.2);
+  text-align: center;
 }
 
 .tagName{
   display: inline-block;
-  padding: 0.2em;
+  padding: 0 0.5em;
+
+  color: #fff;
+}
+
+.tagSeleted{
+  background-color: #800080;
 }
 
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Opera and Firefox */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
 }
