@@ -1,8 +1,43 @@
-/* add css styles here (optional) */
-
-.test {
+.tagContainer{
   display: inline-block;
-  margin: 2em auto;
-  border: 2px solid #000;
-  font-size: 2em;
+  width: 250px;
+  margin: 1em;
+
+  border: 1px solid #000;
+
+  font-size: 1em;
+  overflow-x: hidden;
+}
+
+.tagItems {
+  display: inline-block;
+  padding: 0.5em;
+
+  border: 1px solid #000;
+
+  font-size: 1em;
+  white-space: nowrap;
+}
+
+.tagItem {
+  display: inline-block;
+  padding: 0.2em;
+}
+
+.tagItem:last-child {
+}
+
+.tagName{
+  display: inline-block;
+  padding: 0.2em;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
 }
