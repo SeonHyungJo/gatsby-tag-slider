@@ -2,11 +2,24 @@ import React, { useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import styles from './styles.css'
 
-const TagSlider = ({ tags, selectHandle, addTag }) => {
+/**
+ * Add User custom class name
+ * @returns { container : 'custom-conainer'}
+ */
+const useCustomClass = (prefix, styleList) => {
+  const customClasses = styleList.reduce((acc, name) => {
+    name !== 'noselect' && (acc[name] = `${prefix}-name`)
+    return acc
+  }, {})
+  return customClasses
+}
+
+const TagSlider = ({ tags, selectHandle, addTag, classPrefix }) => {
   const [moveFlag, setMoveFlag] = useState(false)
   const [canClick, setCanClick] = useState(true)
   const [startPos, setstartPos] = useState(0)
   const sliderEl = useRef(null)
+  const styleClasses = !classPrefix ? styles : useCustomClass(classPrefix, Object.keys(styles))
 
   const mouseDownHandle = (e) => {
     const clientX = e.clientX || e.touches[0].clientX
@@ -20,7 +33,7 @@ const TagSlider = ({ tags, selectHandle, addTag }) => {
       const clientX = e.clientX || e.touches[0].clientX
       const gap = startPos - clientX
 
-      gap < 2 && setCanClick(false)
+      gap > 3 && setCanClick(false)
       sliderEl.current.scrollTo(sliderEl.current.scrollLeft + gap, 0)
       setstartPos(clientX)
     }
@@ -28,13 +41,12 @@ const TagSlider = ({ tags, selectHandle, addTag }) => {
 
   const mouseUpHandle = (e) => {
     setMoveFlag(false)
-    e.preventDefault()
   }
 
   return (
-    <div className={styles.tagContainer} ref={sliderEl}>
+    <div className={styleClasses.container} ref={sliderEl}>
       <div
-        className={styles.tagItems}
+        className={styleClasses.items}
         onMouseDown={mouseDownHandle}
         onMouseMove={mouseMoveHandle}
         onMouseUp={mouseUpHandle}
@@ -47,10 +59,10 @@ const TagSlider = ({ tags, selectHandle, addTag }) => {
           Object.values(tags).map(({ id, name, selected }) =>
             <div
               key={`tag-slider-${id}`}
-              className={`${styles.tagItem} ${selected ? styles.tagSeleted : ''} ${styles.noselect}`}
+              className={`${styleClasses.item} ${selected ? styleClasses.seleted : ''} ${styles.noselect}`}
               onClick={() => canClick ? selectHandle(id) : setCanClick(true)}
             >
-              <span className={styles.tagName}>{name}</span>
+              <span className={styleClasses.name}>{name}</span>
             </div>
           )
         }
@@ -66,7 +78,8 @@ TagSlider.propTypes = {
     selected: PropTypes.bool
   }),
   selectHandle: PropTypes.func,
-  addTag: PropTypes.func
+  addTag: PropTypes.func,
+  classPrefix: PropTypes.string
 }
 
 export default TagSlider

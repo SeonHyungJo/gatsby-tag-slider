@@ -1,7 +1,7 @@
-import ExampleComponent from '../src/'
+import TagSlider from '../src/'
 
-describe('ExampleComponent', () => {
+describe('TagSlider', () => {
   it('is truthy', () => {
-    expect(ExampleComponent).toBeTruthy()
+    expect(TagSlider).toBeTruthy()
   })
 })
