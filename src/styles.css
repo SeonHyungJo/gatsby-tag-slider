@@ -9,7 +9,11 @@
   border-radius: 25px;
 
   font-size: 1em;
-  overflow-x: hidden;
+  overflow-x: auto;
+}
+
+.container::-webkit-scrollbar {
+  display: none;
 }
 
 .items {
