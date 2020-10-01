@@ -1,6 +1,22 @@
 {
-  "main.css": "static/css/main.280c1106.css",
-  "main.css.map": "static/css/main.280c1106.css.map",
-  "main.js": "static/js/main.fdd560b3.js",
-  "main.js.map": "static/js/main.fdd560b3.js.map"
+  "files": {
+    "main.css": "/gatsby-tag-slider/static/css/main.eb28a501.chunk.css",
+    "main.js": "/gatsby-tag-slider/static/js/main.1fe60099.chunk.js",
+    "main.js.map": "/gatsby-tag-slider/static/js/main.1fe60099.chunk.js.map",
+    "runtime-main.js": "/gatsby-tag-slider/static/js/runtime-main.784925ae.js",
+    "runtime-main.js.map": "/gatsby-tag-slider/static/js/runtime-main.784925ae.js.map",
+    "static/js/2.e40337da.chunk.js": "/gatsby-tag-slider/static/js/2.e40337da.chunk.js",
+    "static/js/2.e40337da.chunk.js.map": "/gatsby-tag-slider/static/js/2.e40337da.chunk.js.map",
+    "index.html": "/gatsby-tag-slider/index.html",
+    "precache-manifest.cceb3218744af90447f3c157ecacfae8.js": "/gatsby-tag-slider/precache-manifest.cceb3218744af90447f3c157ecacfae8.js",
+    "service-worker.js": "/gatsby-tag-slider/service-worker.js",
+    "static/css/main.eb28a501.chunk.css.map": "/gatsby-tag-slider/static/css/main.eb28a501.chunk.css.map",
+    "static/js/2.e40337da.chunk.js.LICENSE.txt": "/gatsby-tag-slider/static/js/2.e40337da.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.784925ae.js",
+    "static/js/2.e40337da.chunk.js",
+    "static/css/main.eb28a501.chunk.css",
+    "static/js/main.1fe60099.chunk.js"
+  ]
 }
