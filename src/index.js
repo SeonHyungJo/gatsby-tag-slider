@@ -34,7 +34,7 @@ const TagSlider = ({ tags, selectHandle, customClassPrefix = '' }) => {
   return (
     <section className={customClassPrefix ? customClassPrefix + '-container' : styles.container} ref={sliderEl}>
       <div
-        className={styles.items}
+        className={customClassPrefix ? customClassPrefix + '-items' : styles.items}
         onMouseDown={mouseDownHandle}
         onMouseMove={mouseMoveHandle}
         onMouseUp={mouseUpHandle}
