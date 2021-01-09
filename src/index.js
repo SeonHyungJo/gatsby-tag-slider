@@ -1,34 +1,29 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import styles from './styles.css'
 
-/**
- * Add User custom class name
- * @returns { container : 'custom-conainer'}
- */
-const useCustomClass = (prefix, styleList) => {
-  const customClasses = styleList.reduce((acc, name) => {
-    name !== 'noselect' && (acc[name] = `${prefix}-name`)
-    return acc
-  }, {})
-  return customClasses
-}
+const useCustomClass = (prefix, styleList) => styleList.reduce((acc, name) => {
+  name !== 'noselect' && (acc[name] = `${prefix}-name`)
+  return acc
+}, {})
 
-const TagSlider = ({ tags, selectHandle, addTag, classPrefix }) => {
+const TagSlider = ({ tags, selectHandle, classPrefix }) => {
+  const sliderEl = useRef(null)
+
   const [moveFlag, setMoveFlag] = useState(false)
   const [canClick, setCanClick] = useState(true)
   const [startPos, setstartPos] = useState(0)
-  const sliderEl = useRef(null)
+
   const styleClasses = !classPrefix ? styles : useCustomClass(classPrefix, Object.keys(styles))
 
-  const mouseDownHandle = (e) => {
+  const mouseDownHandle = useCallback((e) => {
     const clientX = e.clientX || e.touches[0].clientX
 
     setMoveFlag(true)
     setstartPos(clientX)
-  }
+  }, [startPos, moveFlag])
 
-  const mouseMoveHandle = (e) => {
+  const mouseMoveHandle = useCallback((e) => {
     if (moveFlag) {
       const clientX = e.clientX || e.touches[0].clientX
       const gap = startPos - clientX
@@ -37,14 +32,14 @@ const TagSlider = ({ tags, selectHandle, addTag, classPrefix }) => {
       sliderEl.current.scrollTo(sliderEl.current.scrollLeft + gap, 0)
       setstartPos(clientX)
     }
-  }
+  }, [moveFlag])
 
-  const mouseUpHandle = (e) => {
+  const mouseUpHandle = useCallback((e) => {
     setMoveFlag(false)
-  }
+  }, [moveFlag])
 
   return (
-    <div className={styleClasses.container} ref={sliderEl}>
+    <section className={styleClasses.container} ref={sliderEl}>
       <div
         className={styleClasses.items}
         onMouseDown={mouseDownHandle}
@@ -67,7 +62,7 @@ const TagSlider = ({ tags, selectHandle, addTag, classPrefix }) => {
           )
         }
       </div>
-    </div>
+    </section>
   )
 }
 
@@ -78,7 +73,6 @@ TagSlider.propTypes = {
     selected: PropTypes.bool
   }),
   selectHandle: PropTypes.func,
-  addTag: PropTypes.func,
   classPrefix: PropTypes.string
 }
 
