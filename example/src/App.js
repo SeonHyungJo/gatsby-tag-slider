@@ -2,47 +2,47 @@ import React, { Component } from 'react'
 import TagSlider from 'gatsby-tag-slider'
 
 const tags = {
-  'react': {
+  react: {
     id: 'react',
     name: 'react',
     selected: false
   },
-  'network': {
+  network: {
     id: 'network',
     name: 'network',
     selected: false
   },
-  'es3': {
+  es3: {
     id: 'es3',
     name: 'es3',
     selected: false
   },
-  'java': {
+  java: {
     id: 'java',
     name: 'java',
     selected: false
   },
-  'sprint': {
+  sprint: {
     id: 'sprint',
     name: 'sprint',
     selected: false
   },
-  'vue': {
+  vue: {
     id: 'vue',
     name: 'vue',
     selected: false
   },
-  'js': {
+  js: {
     id: 'js',
     name: 'js',
     selected: false
   },
-  'es5': {
+  es5: {
     id: 'es5',
     name: 'es5',
     selected: false
   },
-  'tdd': {
+  tdd: {
     id: 'tdd',
     name: 'tdd',
     selected: false
@@ -61,7 +61,7 @@ export default class App extends Component {
     this.setState((prevState) => {
       return {
         ...prevState,
-        'tags': {
+        tags: {
           ...prevState.tags,
           [id]: {
             ...prevState.tags[id],

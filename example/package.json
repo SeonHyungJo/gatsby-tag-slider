@@ -8,8 +8,8 @@
     "gatsby-tag-slider": "link:..",
     "prop-types": "^15.6.2",
     "react": "link:../node_modules/react",
-    "react-dom": "16.13.1",
-    "react-scripts": "3.4.3"
+    "react-dom": "17.0.1",
+    "react-scripts": "4.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
