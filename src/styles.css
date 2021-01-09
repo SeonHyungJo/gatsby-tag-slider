@@ -1,11 +1,20 @@
+button {
+  border: none;
+  outline: 0;
+  background-color: #fff;
+
+  cursor: pointer;
+  user-select: none;
+}
+
 .container{
   display: inline-block;
   max-width: 100%;
 
   background-color: #F6F6F6;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  border-left: 5px solid rgba(0, 0, 0, 0.2);
-  border-right: 5px solid rgba(0, 0, 0, 0.2);
+  border-left: 3px solid rgba(0, 0, 0, 0.2);
+  border-right: 3px solid rgba(0, 0, 0, 0.2);
   border-radius: 25px;
 
   font-size: 1em;
@@ -26,27 +35,24 @@
 
 .item {
   display: inline-block;
-  padding: 0.2em;
-  margin: 0 0.1em;
-  min-width: 50px;
+  padding: 0.5em 1em;
+  margin: 0 0.2em;
 
   background-color: #77af9c;
 
   border-radius: 25px;
-  box-shadow: 0rem 0.1rem 0.01rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 0.4px 0.4px rgba(0, 0, 0, 0.2);
   text-align: center;
 
   transition: background 0.2s ease-in-out;
 }
 
 .name{
-  display: inline-block;
-  padding: 0 0.5em;
-
+  font-size: 14px;
   color: #fff;
 }
 
-.seleted{
+.selected{
   background-color: #800080;
 }
 

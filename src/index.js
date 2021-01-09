@@ -2,19 +2,12 @@ import React, { useState, useRef, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import styles from './styles.css'
 
-const useCustomClass = (prefix, styleList) => styleList.reduce((acc, name) => {
-  name !== 'noselect' && (acc[name] = `${prefix}-name`)
-  return acc
-}, {})
-
-const TagSlider = ({ tags, selectHandle, classPrefix }) => {
+const TagSlider = ({ tags, selectHandle, customClassPrefix = '' }) => {
   const sliderEl = useRef(null)
 
   const [moveFlag, setMoveFlag] = useState(false)
   const [canClick, setCanClick] = useState(true)
   const [startPos, setstartPos] = useState(0)
-
-  const styleClasses = !classPrefix ? styles : useCustomClass(classPrefix, Object.keys(styles))
 
   const mouseDownHandle = useCallback((e) => {
     const clientX = e.clientX || e.touches[0].clientX
@@ -39,9 +32,9 @@ const TagSlider = ({ tags, selectHandle, classPrefix }) => {
   }, [moveFlag])
 
   return (
-    <section className={styleClasses.container} ref={sliderEl}>
+    <section className={customClassPrefix ? customClassPrefix + '-container' : styles.container} ref={sliderEl}>
       <div
-        className={styleClasses.items}
+        className={styles.items}
         onMouseDown={mouseDownHandle}
         onMouseMove={mouseMoveHandle}
         onMouseUp={mouseUpHandle}
@@ -52,13 +45,17 @@ const TagSlider = ({ tags, selectHandle, classPrefix }) => {
       >
         {
           Object.values(tags).map(({ id, name, selected }) =>
-            <div
+            <button
               key={`tag-slider-${id}`}
-              className={`${styleClasses.item} ${selected ? styleClasses.seleted : ''} ${styles.noselect}`}
+              className={`
+                ${customClassPrefix ? customClassPrefix + '-item' : styles.item}
+                ${customClassPrefix ? selected ? customClassPrefix + '-selected' : '' : selected ? styles.selected : ''}
+                ${styles.noselect}
+              `}
               onClick={() => canClick ? selectHandle(id) : setCanClick(true)}
             >
-              <span className={styleClasses.name}>{name}</span>
-            </div>
+              <span className={customClassPrefix ? customClassPrefix + '-name' : styles.name}>{name}</span>
+            </button>
           )
         }
       </div>
@@ -73,7 +70,7 @@ TagSlider.propTypes = {
     selected: PropTypes.bool
   }),
   selectHandle: PropTypes.func,
-  classPrefix: PropTypes.string
+  customClassPrefix: PropTypes.string
 }
 
 export default TagSlider

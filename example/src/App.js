@@ -75,7 +75,7 @@ export default class App extends Component {
   render() {
     return (
       <div className={'outerDiv'}>
-        <TagSlider tags={this.state.tags} selectHandle={this.selectHandle}/>
+        <TagSlider tags={this.state.tags} selectHandle={this.selectHandle} customClassPrefix={'snyung'} />
       </div>
     )
   }
